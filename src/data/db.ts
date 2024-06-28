@@ -1,7 +1,13 @@
 import { Sequelize } from 'sequelize';
 
+const DB_URL  = process.env.DB_URL;
 
-const sequelize = new Sequelize('postgres://postgres:1234@localhost:5432/postgres');
+
+if (!DB_URL) {
+    throw new Error("Missing DB_URL in environment variables");
+}
+
+const sequelize = new Sequelize(DB_URL);
 
 export default sequelize;
 
