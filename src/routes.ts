@@ -2,9 +2,12 @@ import { Router, Request, Response } from 'express';
 
 import User, { register, login } from './model/User';
 
-import { generateToken, generateToken1sec, validToken } from './security/authorization';
+
+import { generateToken, generateToken1sec, validToken,  } from './security/authorization';
 
 import { TokenExpiredError } from 'jsonwebtoken';
+
+
 const router: Router = Router();
 
 router.get("/", async (req: Request, res: Response) => {
@@ -39,10 +42,13 @@ router.post("/api/login", async (req : Request, res: Response) => {
         if (user) {
             const successfulLogin = await login(user, password);
             if (successfulLogin) {
+                const token = generateToken(user);
+                
                 res.set({
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${generateToken(user)}`
+                    'Authorization': `Bearer ${token}`
                 });
+
                 res.status(200).json({ message: "Login successful"});
             } else {
                 res.status(401).send("Invalid email or password");
