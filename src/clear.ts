@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express, { Express } from 'express';
 import router from './routes'
 
-import { connect, clearData, close } from './data/db';
+import { connect, clearData } from './data/db';
 
 dotenv.config();
 
