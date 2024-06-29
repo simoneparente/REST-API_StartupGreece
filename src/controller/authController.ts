@@ -5,6 +5,8 @@ import { generateToken, validateToken} from '../security/authorization';
 
 
 export async function authRegister(req: Request, res: Response){
+    if(!req.body.email || !req.body.password || req.body === undefined) 
+        return res.status(400).send("Bad request");
     try{
         const { username, email, password } = req.body;
         let checkUsername = await User.findOne({ where: { username } });
@@ -20,11 +22,15 @@ export async function authRegister(req: Request, res: Response){
             res.status(400).send("Username already in use");
         }
     } catch (e) {
-        console.log(e);
+        console.error('Error during registration:', e);
+        res.status(500).send("Internal server error");
     }
 }
 
 export async function authLogin(req: Request, res: Response){
+    if(!req.body.email || !req.body.password || req.body === undefined) 
+        return res.status(400).send("Bad request");
+
     const { email, password } = req.body;
     try {
         const user = await User.findOne({ where: { email } });
@@ -52,6 +58,7 @@ export async function authLogin(req: Request, res: Response){
 }
 
 export async function authLogout(req: Request, res: Response){
+    if(req.body === undefined) return res.status(400).send("Bad request");
     const header = req.get('Authorization');
     if(!header) return res.status(401).send("Unauthorized");
     if(await validateToken(header)){
