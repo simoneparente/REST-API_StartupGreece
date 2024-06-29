@@ -17,7 +17,7 @@ This is a RESTful API for user authentication, developed as part of an internshi
 - ORM: Sequelize-PG
 - Authentication: JSON Web Tokens (JWT)
 - Password Hashing: bcrypt
-- Code q
+- Code quality: SonarQube (no testing provided)
 
 ## Getting Started
 
