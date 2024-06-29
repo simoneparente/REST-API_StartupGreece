@@ -73,7 +73,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
-# .env not included in the .gitignore for delivery
+.env
 .env.development.local
 .env.test.local
 .env.production.local
