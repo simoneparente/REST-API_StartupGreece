@@ -8,8 +8,8 @@ const router: Router = Router();
 
 router.get("/", async (req: Request, res: Response) => {
     res.status(201)
-    .send("Endpoints available:" +
-          "POST <b>/api/register</b>, <b>/api/login</b>, <b>/api/logout</b>,"
+    .send("Endpoints available:</br>"  +
+          "POST <b>/api/register</b>, <b>/api/login</b>, <b>/api/logout</b>,</br>"
         + "GET  <i>/api/users</i>, <b>/api/Tokens</b>");
 });
 
