@@ -15,7 +15,7 @@ export default sequelize;
 export async function connect() {
     if(!(await sequelize.showAllSchemas({logging: console.log}))) {
         console.log("Schema does not exist. Creating schema...");
-        await sequelize.createSchema('SG', {logging: console.log});
+        await sequelize.createSchema('SG', {logging: () => {}});
     }
     try {
         await sequelize.sync()

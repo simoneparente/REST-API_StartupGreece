@@ -35,10 +35,6 @@ User.init(
             validate: {
                 len: [8, 255],
             },
-            get(){
-                const rawValue = this.getDataValue('password');
-                return rawValue ? rawValue.toUpperCase() : null;
-            }
         }
     },
     {
