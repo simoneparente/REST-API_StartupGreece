@@ -24,7 +24,7 @@ This is a RESTful API for user authentication, developed as part of an internshi
 ### Prerequisites
 
 - Node.js installed
-- MongoDB installed and running
+- PostgreSQL installed and running
 - npm (Node Package Manager)
 
 ### Installation
