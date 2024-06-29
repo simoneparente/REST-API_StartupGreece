@@ -16,13 +16,6 @@ Token.init(
             allowNull: false,
             unique: true
         },
-        expirationDate: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            validate: {
-                isDate: true
-            }
-        },
         expired: {
             type: DataTypes.BOOLEAN,
             allowNull: false
@@ -37,13 +30,18 @@ Token.init(
     }
 );
 
-export async function addToken(token: string, expirationDate: Date): Promise<Token> {
-    return Token.create({token, expirationDate, expired: false});
+export async function addToken(token: string): Promise<Token> {
+    return Token.create({token, expired: false});
 }
 
-export async function invalidateToken(token: Token): Promise<void> {
-    token.setDataValue('expired', true);
-    await token.save();
+export async function invalidateToken(value: string): Promise<void> {
+    const token = await Token.findOne({where: {token: value}});
+    if(token){
+        console.log("Invalidating token");
+        token.set('expired', true);
+        await token.save();
+        console.log("Token invalidated");
+    }
 }
 
 export default Token;
