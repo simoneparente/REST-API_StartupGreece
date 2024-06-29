@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "tsx src/app.ts --noImplicitAny",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "No test available",
     "clean": "tsx src/clear.ts"
   },
   "author": "Parente Martone Simone",
@@ -19,6 +19,7 @@
     "pg": "^8.12.0",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.3",
+    "ts-node": "^10.9.2",
     "tsx": "^4.15.7"
   }
 }
