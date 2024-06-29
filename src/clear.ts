@@ -1,10 +1,9 @@
-import dotenv from "dotenv";
+import './setup'
 import express, { Express } from 'express';
 import router from './routes'
 
 import { connect, clearData } from './data/db';
 
-dotenv.config();
 
 const app: Express = express();
 const PORT = 3000;
