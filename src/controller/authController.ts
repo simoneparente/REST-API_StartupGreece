@@ -58,13 +58,12 @@ export async function authLogin(req: Request, res: Response){
 }
 
 export async function authLogout(req: Request, res: Response){
-    if(req.body === undefined) return res.status(400).send("Bad request");
     const header = req.get('Authorization');
     if(!header) return res.status(401).send("Unauthorized");
     if(await validateToken(header)){
         const token = header.split(' ')[1];
         await invalidateToken(token);
-        res.status(200).send("Logout successful");
+        res.status(200).send("Token Unauthorized successfully");
     } else{
         res.status(401).send("Unauthorized");
     }
