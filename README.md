@@ -42,15 +42,16 @@ This is a RESTful API for user authentication, developed as part of an internshi
     npm install
     ```
 
-3. Set up the environment variables: Create a `.env` file in the root directory and add the following: 
-```
+3. Set up the environment variables: Create a `.env` file in the root directory and add the following:
+
+	```
 	DB_URL=postgres://postgres:1234@localhost:5432/postgres
 	SECRET_KEY=afjfiwjfowefewk43gregr
-```
+	```
 
-4. Set up PostgreSQL: - Ensure PostgreSQL is installed and running. - Create a database: ```sh psql -U postgres CREATE DATABASE yourdbname; ``` - Update the `DB_URL` in the `.env` file with your database details.
+5. Set up PostgreSQL: - Ensure PostgreSQL is installed and running. - Create a database: ```sh psql -U postgres CREATE DATABASE yourdbname; ``` - Update the `DB_URL` in the `.env` file with your database details.
 
-5.  Start the server:
+6.  Start the server:
 
     ```sh
     npm start
@@ -67,9 +68,9 @@ This is a RESTful API for user authentication, developed as part of an internshi
 
 ```json
 {
-    "username": "pippo",
-    "email": "pluto@gmail.com",
-    "password": "paperino"
+	"username": "pippo",
+	"email": "pluto@gmail.com",
+	"password": "paperino"
 }
 ```
 
@@ -89,7 +90,7 @@ This is a RESTful API for user authentication, developed as part of an internshi
 ```json
 {
 	"email": "pluto@gmail.com",
-    "password": "paperino"
+	"password": "paperino"
 }
 ```
 
@@ -118,7 +119,7 @@ This is a RESTful API for user authentication, developed as part of an internshi
     - `Authorization: Bearer <token>`
 - **Responses:**
     - `200 OK` - Token Unauthorized successfully
-
+    - `401 Unauthorized` - Invalid token
 ## Security Measures
 
 - Passwords are hashed using `bcrypt`.
